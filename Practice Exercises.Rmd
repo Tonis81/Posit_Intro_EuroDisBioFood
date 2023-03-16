@@ -2,28 +2,142 @@
 title: "Practice Exercises"
 output: html_document
 date: "2023-03-13"
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+Here the webs I have extracted the information: https://rpubs.com/karagawa/ggplot2 ; https://rpubs.com/moeransm/intro-iris
+
+# Basic R
+
+HERE I COULD ADD SOME BASIC R CODE
+
+# Install and load libraries
+
+```{r}
+rm(list=ls())
+library(here) #set directory
+library(datasets) #build in datasets
 ```
 
-## R Markdown
+# Iris dataset
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+```{r}
 
-```{r cars}
-summary(cars)
+data(iris)
+help(iris)
+names(iris)
+summary(iris)
+names(iris) <- tolower(names(iris))
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+dt <- read.csv(here("data", "iris.csv"))
+head(dt)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+
+names(iris)
+library(dplyr)
+```
+
+```{r}
+# filter() the data for species virginica
+virginica <- filter(iris, species == "virginica")
+head(virginica) # This dispalys the first six rows
+```
+
+```{r}
+sepalLength6 <- filter(iris, species == "virginica", sepal.length > 6)
+tail(sepalLength6) # compare this to head()
+```
+
+```{r}
+# select() the specified columns
+selected <- select(iris, sepal.length, sepal.width, petal.length)
+# select all columns from sepal.length to petal.length
+selected2 <- select(iris, sepal.length:petal.length)
+head(selected, 3)
+```
+
+```{r}
+# create a new column that stores logical values for sepal.width greater than half of sepal.length
+newCol <- mutate(iris, greater.half = sepal.width > 0.5 * sepal.length)
+tail(newCol)
+```
+
+## Visualization
+
+```{r}
+plot(iris)
+```
+
+
+```{r}
+# use ?plot to read more about other arguments
+plot(iris$sepal.width, iris$sepal.length)
+```
+
+```{r}
+# ?hist will give you details on more arguments
+hist(iris$sepal.width)
+```
+
+```{r}
+library(ggplot2)
+names(iris)
+ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point()
+```
+
+```{r}
+ggplot(iris, aes(x = sepal.length, y = sepal.width, colour = species)) + geom_point()
+```
+
+```{r}
+ggplot(iris, aes(x = sepal.length, fill = species)) + geom_histogram()
+```
+
+```{r}
+ggplot(iris, aes(x = sepal.length, colour = species)) + geom_density()
+```
+
+```{r}
+ggplot(iris, 
+       aes(x = species, y = sepal.length)) + 
+        geom_boxplot()
+```
+
+
+```{r}
+ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point() + geom_smooth()
+```
+
+```{r}
+ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point() + geom_smooth(aes(colour = species))
+```
+
+```{r}
+base <- ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point()
+
+base + facet_wrap(~species)
+```
+
+
+# inference
+data from: https://jcoliver.github.io/learn-r/002-intro-stats.html
+
+```{r}
+petal.length.aov <- aov(formula = petal.length ~ species, data = iris)
+
+summary(petal.length.aov)
+```
+
+
+```{r}
+sink(file = "output/petal-length-anova.txt")
+summary(object = petal.length.aov)
+sink()
+```
+
