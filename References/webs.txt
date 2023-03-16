@@ -1,0 +1,12 @@
+
+## Introduction to R - iris data
+
+https://rpubs.com/karagawa/ggplot2
+ 
+https://rpubs.com/moeransm/intro-iris
+
+
+## inferences statistics (ANOVA)
+
+https://jcoliver.github.io/learn-r/002-intro-stats.html
+

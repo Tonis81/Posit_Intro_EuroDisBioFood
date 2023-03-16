@@ -1,16 +1,27 @@
 ---
 title: "Practice Exercises"
 output: html_document
-date: "2023-03-13"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 editor_options: 
   chunk_output_type: console
 ---
 
-Here the webs I have extracted the information: https://rpubs.com/karagawa/ggplot2 ; https://rpubs.com/moeransm/intro-iris
+# Basic R calculation
 
-# Basic R
+```{r}
+2+2
 
-HERE I COULD ADD SOME BASIC R CODE
+5-3
+
+4+2*(10/2)
+
+sqrt(9)
+
+a <- c(2, 3, 4)
+
+2*a
+```
+
 
 # Install and load libraries
 
@@ -18,53 +29,65 @@ HERE I COULD ADD SOME BASIC R CODE
 rm(list=ls())
 library(here) #set directory
 library(datasets) #build in datasets
+library(tidyverse) #The tidyverse is an opinionated collection of R packages designed for data science
 ```
 
 # Iris dataset
 
+Upload the data as a built-in dataset.
 
 ```{r}
-
 data(iris)
 help(iris)
+names(iris) <- tolower(names(iris)) #This is to use lowercase names.
 names(iris)
+dim(iris)
+head(iris)
+tail(iris)
 summary(iris)
-names(iris) <- tolower(names(iris))
+str(iris)
+table(iris$species)
 ```
+
+Upload the data as an external dataset.
 
 ```{r}
 dt <- read.csv(here("data", "iris.csv"))
-head(dt)
-```
-
-```{r}
-
 names(iris)
-library(dplyr)
+dim(iris)
+head(iris)
+tail(iris)
+summary(iris)
+str(iris)
+table(iris$species)
 ```
 
 ```{r}
 # filter() the data for species virginica
 virginica <- filter(iris, species == "virginica")
+dim(virginica)
 head(virginica) # This dispalys the first six rows
 ```
 
 ```{r}
 sepalLength6 <- filter(iris, species == "virginica", sepal.length > 6)
+dim(sepalLength6)
 tail(sepalLength6) # compare this to head()
 ```
 
 ```{r}
 # select() the specified columns
-selected <- select(iris, sepal.length, sepal.width, petal.length)
+selected <- iris %>% select( sepal.length, sepal.width, petal.length)
 # select all columns from sepal.length to petal.length
-selected2 <- select(iris, sepal.length:petal.length)
+selected2 <- iris %>% select(sepal.length:petal.length)
 head(selected, 3)
+head(selected2, 3)
 ```
 
 ```{r}
 # create a new column that stores logical values for sepal.width greater than half of sepal.length
-newCol <- mutate(iris, greater.half = sepal.width > 0.5 * sepal.length)
+newCol <- iris %>% mutate(greater.half = sepal.width > 0.5 * sepal.length)
+newCol$half_sepal_length <- 0.5 * newCol$sepal.length
 tail(newCol)
 ```
 
@@ -72,10 +95,6 @@ tail(newCol)
 
 ```{r}
 plot(iris)
-```
-
-
-```{r}
 # use ?plot to read more about other arguments
 plot(iris$sepal.width, iris$sepal.length)
 ```
@@ -86,8 +105,7 @@ hist(iris$sepal.width)
 ```
 
 ```{r}
-library(ggplot2)
-names(iris)
+# library(ggplot2)
 ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point()
 ```
 
@@ -109,7 +127,6 @@ ggplot(iris,
         geom_boxplot()
 ```
 
-
 ```{r}
 ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point() + geom_smooth()
 ```
@@ -124,17 +141,14 @@ base <- ggplot(iris, aes(x = sepal.length, y = sepal.width)) + geom_point()
 base + facet_wrap(~species)
 ```
 
-
-# inference
-data from: https://jcoliver.github.io/learn-r/002-intro-stats.html
+## Inference
 
 ```{r}
 petal.length.aov <- aov(formula = petal.length ~ species, data = iris)
-
 summary(petal.length.aov)
 ```
 
-
+Safe the results from the ANOVA
 ```{r}
 sink(file = "output/petal-length-anova.txt")
 summary(object = petal.length.aov)
