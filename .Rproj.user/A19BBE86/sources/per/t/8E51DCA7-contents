@@ -1,0 +1,416 @@
+---
+title: "EuroDisBioFood - Block 2: Reproducible research"
+subtitle: "Ángel Carbonell (angel.carbonell@umh.es) & Toni Signes (asignes@umh.es)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+#output: ioslides_presentation
+output:
+  ioslides_presentation:
+    highlight: pygments
+    widescreen: yes
+bibliography: "`r here::here('metadata', 'References.bib')`"
+csl: "`r here::here('metadata', 'paediatric-and-perinatal-epidemiology.csl')`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+rm(list=ls())
+
+library(dplyr)
+library(plyr)
+library(tidyverse)
+library(here)
+library(readxl)
+library(xlsx)
+library(here)
+library(kableExtra)
+```
+
+# Introduction to R for data analysis
+
+## Overview
+
+```{r, eval = TRUE, out.width="30%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "R logo.png"))
+```
+
+R is "… a language and environment for statistical computing and graphics” ([R-Project.org](https://www.r-project.org/about.html)).
+
+## Advantages of R
+
+- Open source
+\note{R is a free and open-source programming language, which means that anyone can use it and contribute to its development. This makes R accessible to a wide range of users, including students, researchers, and professionals.}
+
+- Large community
+\note{R has a large and active community of users and developers who share their knowledge and resources through forums, mailing lists, and social media. This community creates a wealth of resources, including packages, tutorials, and blogs, that help users learn and solve problems with R.}
+
+- Versatility: 
+\note{R is a highly versatile language that can be used for a wide range of data analysis tasks, including statistical modeling, data visualization, machine learning, and data manipulation. R also supports a variety of data formats, including CSV, Excel, SQL, and many others.}
+
+- Robust statistical capabilities
+\note{R is designed specifically for statistical analysis, and it includes a vast array of statistical functions and methods. R also supports a wide range of statistical models, including linear and nonlinear regression, time-series analysis, and multivariate analysis.}
+
+- Graphics
+\note{R has excellent graphics capabilities that allow users to create high-quality visualizations of their data. R supports a wide range of graphics types, including scatter plots, bar charts, line graphs, heat maps, and many others. R also allows users to customize their graphics using a wide range of options.}
+
+- Reproducibility
+\note{R allows users to write code that is reproducible, which means that others can reproduce the same analysis or visualization using the same code and data. This makes it easier to collaborate and share research results with others.}
+
+- Integration
+\note{R can be easily integrated with other programming languages and tools, including Python, SQL, and LaTeX. This allows users to combine the strengths of different tools and create more powerful workflows.}
+
+## Examples of graphics
+
+```{r, eval = TRUE, out.width="55%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Fig example.png"))
+```
+
+## Disadvantages of R
+
+- Steep learning curve
+\note{R has a steep learning curve, especially for users who are new to programming or statistics. R uses a syntax that is quite different from other programming languages, which can make it challenging to learn and use effectively.}
+
+- Memory management
+\note{R is not efficient at managing memory, which can be a problem for users working with large datasets. R loads all data into memory, which can cause problems if the dataset is too large to fit into memory.}
+
+- Lack of user interface
+\note{R is a command-line interface, which can be intimidating for users who are used to working with graphical user interfaces (GUIs). While there are GUIs available for R, such as RStudio, they can still require some level of programming knowledge to use effectively.}
+
+- Package maintenance: 
+\note{R has a large number of packages available, but not all packages are maintained regularly. This can lead to compatibility issues or bugs, and may require users to spend time searching for alternative packages or writing their own code.}
+
+# R and RStudio Desktop 
+
+## Installing R
+
+**Step 1**: Google [The Comprehensive R Archive Network](https://cran.r-project.org/). This is called CRAN for short.
+
+**Step 2**: Once you arrive at the homepage, click one of the first three links.
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Step 1-2 installation R.png"))
+```
+
+## Installing R
+
+**Step 3**: Next you will select the first link labeled base. This option only downloads the basic packages for R. You can always add additional packages later.
+**Step 4**: After clicking base, you will click the top link to download the most recent version of R. 
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Step 3-4 installation R.png"))
+```
+
+## Installing R
+
+**Step 5**: After clicking the download link, the installer file will download within your browser. Once complete, click on the file to start the installation process.
+
+**Step 6**: I recommend maintaining all the defaults throughout the installation process. The only option I would change is adding a desktop shortcut if desired.
+
+```{r, eval = TRUE, out.width="45%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Step 5-6 installation R.png"))
+```
+
+## Installing RStudio/Posit
+
+**Step 1**: Google [RStudio or Posit](https://posit.co/)
+
+**Step 2**: Click the Download tab at the top right of the RStudio homepage.
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Step 1-2 installation Posit.png"))
+```
+
+## Installing RStudio/Posit
+
+**Step 3**: Scroll down until you see the below versions. Download the free version.
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Step 3 installation Posit.png"))
+```
+
+## Installing RStudio/Posit
+
+**Step 4**: You will then be taken to a new page where you must select an operating system.
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Step 4 installation Posit.png"))
+```
+
+**Step 6**: I recommend maintaining all the defaults throughout the installation process.
+
+**Step 7**: Search your applications for RStudio to open it.
+
+
+# Posit cloud
+
+## Homepage
+
+[Posit Cloud](https://posit.cloud/)
+
+```{r, eval = TRUE, out.width="100%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Posit homepage.png"))
+```
+
+## Log in
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Posit login.png"))
+```
+
+## New project
+
+Crea a new RStudio project
+
+```{r, eval = TRUE, out.width="50%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New project.png"))
+```
+
+## Workspace
+
+```{r, eval = TRUE, out.width="100%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Workspace.png"))
+```
+
+## New RMarkdown
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New RMarkdown.png"))
+```
+
+## Name RMarkdown
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Name Markdown.png"))
+```
+
+## Knit RMarkdown
+
+```{r, eval = TRUE, out.width="80%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Knit RMarkdown.png"))
+```
+
+## Knit html
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "html doc.png"))
+```
+
+# Statistical analysis
+
+## Example 1
+
+**iris flower dataset**
+
+```{r, eval = TRUE, out.width="40%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "PetalSepal.png"))
+```
+
+[Code](https://urldefense.com/v3/__https://posit.cloud/content/5611274__;!!D9dNQwwGXtA!Q9-Ft6o6OtrNH7aZ7VMP5u5asmEeOK_I4VDVW4WEpKWGTfOwQEE7Yafn3tag7CBiouqusYUq5FtbBckC$)
+
+[Output](https://rpubs.com/ToniSignes/1016096)
+
+## Example 2
+
+**mtcars dataset**
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Car.png"))
+```
+
+[Code](https://urldefense.com/v3/__https://posit.cloud/content/5611274__;!!D9dNQwwGXtA!Q9-Ft6o6OtrNH7aZ7VMP5u5asmEeOK_I4VDVW4WEpKWGTfOwQEE7Yafn3tag7CBiouqusYUq5FtbBckC$)
+
+## Example 3
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "NHANES paper.png"))
+```
+
+[Code](https://urldefense.com/v3/__https://posit.cloud/content/5636630__;!!D9dNQwwGXtA!Vij1SP9W5AC8RgUcbLCBk4BxiwPTxKVhEPN9rzC2pkD4n-d_KrVUrdSsx-oZhwgHITPFviwdbWVBia1g$ )
+
+# Writing Reseach Articles
+
+## References - Citation manager
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Ref manager.png"))
+```
+
+Citation management software allows you to download, store, organize, annotate and format citations and articles, and share references with other researchers.
+
+## Mendeley
+
+```{r, eval = TRUE, out.width="20%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Mendeley.png"))
+```
+
+<div style="font-size:15pt">
+
+- The web and desktop application have a slick interface for those not computer-savvy.
+
+- Import citations from many databases 
+
+- Mendeley is available in Chrome web extension, bookmarklets, and mobile app.
+
+- Find relevant papers based on what you’re reading
+
+- Organize your sources using groups, tags, and filters
+
+- More free cloud storage than Zotero.
+
+[download Mendeley](https://www.mendeley.com/reference-management/reference-manager)
+</div>
+
+## Zotero
+
+```{r, eval = TRUE, out.width="25%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Zotero.png"))
+```
+
+<div style="font-size:15pt">
+
+- Import citations from many databases
+
+- Plugins for more major word processors (including Google Docs, OpenOffice, ...)
+
+- Organize your sources using groups, tags, and filters
+
+- Import citations from many databases 
+
+- More customization features than Mendeley
+
+[dowload Zotero](https://www.zotero.org/)
+
+</div>
+
+## BibDesk
+
+```{r, eval = TRUE, out.width="50%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "BibDesk.png"))
+```
+
+[dowload BibDesk](https://bibdesk.sourceforge.io/)
+
+## .bib files
+
+```{r, eval = TRUE, out.width="80%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "BibDesk files.png"))
+```
+
+- **Medeley**: Mendeley Desktop -> Preferences -> BibiTex
+
+- **Zotero**: File -> Export library 
+
+## Journal format
+
+```{r, eval = TRUE, out.width="80%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Format journal.png"))
+```
+
+[Zotero Style Repository](https://www.zotero.org/styles)
+
+## Example
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Researchpaper.png"))
+```
+
+[Example](https://urldefense.com/v3/__https://posit.cloud/content/5586012__;!!D9dNQwwGXtA!RYCbXhbN8nguBsxwhT04QZ6gSqD32o0cII5GQzqjfIxH4wnKI0lqbTOlYhySAUfqVjywvSAJ80XDv8Yy$)
+
+## Final documents
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Final docs.png"))
+```
+
+# Version control with GitHub
+
+## Github
+
+```{r, eval = TRUE, out.width="65%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "GitHub.png"))
+```
+
+[github.com](https://github.com/)
+
+## What is Github?
+
+- GitHub is a web-based platform for version control and collaboration.
+
+- It allows users to store, manage, and share their code repositories online.
+
+- Users can create and contribute to projects, track changes, and manage issues and bugs.
+
+- GitHub is widely used in software development and open-source projects.
+
+- It integrates with various tools and services for multiple programming languages.
+\notes{It supports multiple programming languages and integrates with various tools and services.}
+
+- GitHub offers code review, pull requests, and project management tools 
+\notes{GitHub provides a range of features, such as code review, pull requests, and project management tools.}
+
+- Users can also use GitHub for documentation, wikis, and discussions.
+
+- It's a valuable resource for code collaboration with a large community.
+\note{It has a large community of users and contributors, and it's a valuable resource for learning, sharing, and collaborating on code.}
+
+## Advantages the Github
+
+- Version control
+\note{Github provides version control for your code, which allows you to track changes and collaborate with others more easily. By using Github with RStudio, you can easily push your changes to Github and keep track of different versions of your code.}
+
+- Collaboration
+\note{Github allows multiple users to work on the same codebase simultaneously, which makes collaboration easier. RStudio integrates well with Github, allowing users to easily collaborate on R projects with others.}
+
+- Remote work
+\note{Github allows you to store your code in the cloud, which means you can work on your projects from anywhere with an internet connection. This can be especially helpful for remote teams or for individuals who want to work from different locations.}
+
+- Code sharing
+\note{Github makes it easy to share your code with others. You can make your repositories public, which allows others to view and clone your code. You can also create private repositories, which allows you to collaborate on code with a specific group of people.}
+
+## Installing Gihub
+
+- Go to the GitHub website (www.github.com).
+
+- Click "Sign up" on the top right of the homepage
+\note{Click on the "Sign up" button located on the top right corner of the homepage.}
+
+- Enter username, email, and a strong password in the fields.
+\note{Enter your preferred username, email address, and a strong password in the appropriate fields.}
+
+- Click on the "Create account" button.
+
+- Verify your email by clicking the link in the email GitHub sends you.
+\note{You will be prompted to verify your email address. Check your email inbox for a verification email from GitHub and click on the verification link.}
+
+- Complete required info, then click "Continue
+\note{After filling in the necessary information, click on the "Continue" button.}
+
+- Congratulations! You have successfully created a GitHub account. You can now start creating and collaborating on repositories.
+
+## Create a GitHub repository
+
+```{r, eval = TRUE, out.width="80%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "GiHub repo.png"))
+```
+
+## GitHub - RStudio
+
+```{r, eval = TRUE, out.width="50%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "GitHub RStudio.png"))
+```
+
+## GitHub - RStudio
+
+```{r, eval = TRUE, out.width="50%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Push Commit.png"))
+```
+
+## Create your own manuscript using Markdown in R Studio with version control in GitHub
+
+\note{I am thinking here we could create a repor and then create a paper draft and make commit}
+
+```{r, eval = TRUE, out.width="50%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Markdonw desktop.png"))
+```
+
+

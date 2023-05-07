@@ -1,0 +1,541 @@
+---
+title: "EuroDisBioFood - Block 3: Submission and Review"
+subtitle: "Ángel Carbonell (angel.carbonell@umh.es) & Toni Signes (asignes@umh.es)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+#output: ioslides_presentation
+output:
+  ioslides_presentation:
+    highlight: pygments
+    widescreen: yes
+bibliography: "`r here::here('metadata', 'References.bib')`"
+csl: "`r here::here('metadata', 'paediatric-and-perinatal-epidemiology.csl')`"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+rm(list=ls())
+
+library(dplyr)
+library(plyr)
+library(tidyverse)
+library(here)
+library(readxl)
+library(xlsx)
+library(here)
+library(kableExtra)
+```
+
+# The review process
+
+## Who is who?
+
+- Authors
+\note{Researchers who conduct the research and write the manuscript.}
+
+- Co-authors
+\note{Other researchers who contribute to the research and manuscript.}
+
+- Editor-in-chief
+
+- Editorial board
+\note{Professionals who manage the peer-review process and make final decisions on whether a manuscript is accepted or rejected.}
+- Reviewers 
+\noate{Experts in the same field who evaluate the quality and validity of the manuscript before it can be published.}
+
+- Copy editors
+\note{Professionals who proofread and edit the manuscript for grammar, style, and formatting.}
+
+- Publishers
+\note{Organizations that manage and distribute scientific journals.}
+
+- Indexers
+\note{Professionals who categorize and index published articles in databases and search engines.}
+
+- Readers
+\notes{Scientists, researchers, and other professionals who read and cite published articles in their own research.}
+
+## Editor-in-chief.
+
+- Editor-in-chief: top editor of a scientific journal, responsible for overseeing the publication process
+\note{An Editor-in-chief is the top editor of a scientific journal and is responsible for overseeing the entire publication process.}
+
+- Editor-in-chief oversees the entire publication process, appointed by the publisher or editorial board, and serves as the primary point of contact for authors, reviewers, and readers
+
+- The Editor-in-chief ensures content quality and integrity, and decides on manuscript acceptance/rejection in a scientific journal
+\notes{The Editor-in-chief is responsible for ensuring the quality and integrity of the content published in the journal and making decisions about which manuscripts to accept or reject for publication.}
+
+- Work with the editorial board and other editors to set policies, manage peer review, and develop strategic plans for the journal
+
+- Editor-in-chief writes editorials, represents the journal at events, and promotes it to the scientific community.
+\note{The Editor-in-chief may also write editorials or other content for the journal, represent the journal at conferences or other events, and participate in outreach activities to promote the journal to the scientific community.}
+
+## Editorial board.
+
+- Editorial board ensures scientific quality of journal
+\note{The editorial board is a group of experts in the field who are responsible for the scientific quality of the journal.}
+
+- They are typically appointed by the publisher or editor-in-chief of the journal.
+
+- Editorial board size varies, but typically has several members
+\note{The size of the editorial board can vary depending on the size and scope of the journal, but it usually includes several members.}
+
+- Members of the editorial board are usually chosen based on their expertise and reputation in the field.
+
+- Editorial board reviews, provides feedback, and decides on submissions.
+\notes{The main responsibilities of the editorial board include reviewing manuscripts, providing feedback and suggestions for improvement, and making final decisions on whether to accept or reject submissions.}
+
+- Editorial board develops policies, identifies trends, and promotes journal.
+\note{Editorial board members may also help to develop editorial policies, identify emerging trends in the field, and promote the journal to the scientific community.}
+
+- Editorial board may select guest editors, organize conferences, or serve as journal ambassadors
+\note{Some editorial boards may have additional roles, such as selecting and inviting guest editors for special issues, organizing conferences, or serving as ambassadors for the journal.}
+
+- Editorial board is unpaid but may receive benefits or recognition
+\note{Editorial board members are typically not paid for their service, but they may receive other benefits such as free access to the journal or recognition for their contributions.}
+
+## Editorial board - New manuscript
+
+```{r, eval = TRUE, out.width="65%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "1. New Paper_ts.png"))
+```
+
+## Editorial board - Log in
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "2. Log in.png"))
+```
+
+## Editorial board - Main menu
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "3. Main menu.png"))
+```
+
+## Editorial board - Acceptance
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "4. Accept handle manuscript_ts.png"))
+```
+
+## Editorial board - New assigment
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "5. New assigment.png"))
+```
+
+## Editorial board - Actions
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "6. Actions menu_ts.png"))
+```
+
+## Editorial board - Invite reviwers
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "7. Invite reviwers.png"))
+```
+
+## Editorial board - Invite reviwers
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "7. Invite reviwers.png"))
+```
+
+## Editorial board - Decision
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "8. Editorial decition_ts.png"))
+```
+
+
+## Reviewers.
+
+- A reviewer is an expert in the article's field.
+\note{A reviewer is typically an expert in the same or similar field as the author of the scientific article.}
+
+- Reviewers are often anonymous and independent from the author and the journal.
+
+- Reviewers evaluate article quality, accuracy, and suitability for publication.
+\note{The role of the reviewer is to provide an unbiased evaluation of the scientific article's quality, accuracy, and suitability for publication.}
+
+- Reviewers give feedback and suggest improvements
+\note{Reviewers are responsible for providing constructive criticism and feedback to the author, as well as suggesting improvements and revisions.}
+
+- Reviewers may recommend acceptance, rejection, or revision of the article, based on their evaluation of the work.
+
+## Reviewer board - Log in
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "New manuscript to review", "2. Log in.png"))
+```
+
+## Reviewer - Main menu
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Reviwer platform.png"))
+```
+
+
+## How to carry out a scientific paper review article?
+
+- Read the paper thoroughly
+\note{Before you start reviewing the paper, read it carefully from beginning to end. This will help you understand the overall aim of the study and identify any major issues or concerns.}
+
+- Evaluate the study design
+\note{Once you have a good understanding of the paper, evaluate the study design to see if it is appropriate for the research question. Look for any potential biases or limitations in the study design that could affect the validity of the results.}
+
+- Assess the data analysis
+\note{Review the data analysis methods used in the study and make sure they are appropriate for the research question. Look for any errors or inconsistencies in the data analysis and make sure the results are presented clearly and accurately.}
+
+- Evaluate the results
+\note{Examine the results of the study and evaluate whether they support the research question. Look for any potential confounding factors that may have affected the results and assess the statistical significance of the findings.}
+
+- Identify strengths and weaknesses
+\note{Identify the strengths and weaknesses of the study, including any limitations or areas for improvement. Consider whether the study contributes to the existing knowledge in the field and whether the conclusions are supported by the data.}
+
+- Provide constructive feedback
+\note{Based on your evaluation, provide constructive feedback to the authors. Identify specific areas that need improvement and suggest ways the authors can address these issues. Be specific, objective, and respectful in your feedback.}
+
+- Summarize your review
+\note{Finally, summarize your review in a clear and concise manner. Provide an overall assessment of the paper and recommend whether it should be accepted, rejected, or revised. Make sure to justify your decision based on the strengths and weaknesses you identified during your review.}
+
+# How to choose the best journal for your article? 
+
+## Considerations for Choosing the Best Journal
+
+Scope and focus
+\note{Choose a journal that matches the scope and focus of your research. Read the journal's mission statement and look at previously published articles to see if your research aligns with the journal's aims and scope.}
+[Example: Exposure & Health](https://www.springer.com/journal/12403/aims-and-scope?gclid=Cj0KCQjwlPWgBhDHARIsAH2xdNd30Jww5AjSuvbTBX8mKaK_wCxgW_IoGL-I_3VsryXDWBJpgCWJjjAaAu1wEALw_wcB)
+
+Audience
+\note{Consider the target audience of the journal. Who is the journal intended for? Will your research be of interest and relevance to the readership of the journal?}
+
+Impact factor and ranking
+\note{Look at the impact factor and ranking of the journal. These metrics can provide an indication of the journal's influence and reputation in the field.}
+[Journal Citation Reports (JCR) - Clarivate](https://jcr.clarivate.com/)
+\note{Journal Citation Reports (JCR) is a tool that provides information about academic journals in various fields of study. It is produced by Clarivate Analytics and is widely used to assess the impact of academic journals and the influence of individual articles published within them. JCR allows users to search for journals by name, subject area, or ISSN (International Standard Serial Number) and provides data such as the journal's impact factor, citation metrics, and rankings within its subject category.}
+
+Publication timeline
+\note{Consider the publication timeline of the journal. How long does it typically take for articles to be published? Does the timeline align with your publishing goals?}
+
+Open access options: 
+\note{Consider whether the journal offers open access publishing options. Open access publishing can increase the visibility and accessibility of your research.}
+
+Submission guidelines: 
+\note{Make sure you carefully review the submission guidelines for the journal. Ensure that your research meets the formatting and content requirements, as well as any other guidelines such as word limits or reference style.}
+
+Publication fees
+\note{Check if the journal charges any publication fees, such as article processing charges (APCs) or page fees. Make sure that these fees align with your budget and that you understand any potential fees upfront.}
+[Example PloS ONE](https://plos.org/publish/fees/)
+
+## Be objective about the quality of your manuscript.
+
+- Clarity and organization of the writing
+\note{The manuscript should be clear, concise, and well-organized. Ensure that your introduction is relevant to the research question and hypotheses, the methodology is sound, the results are clearly presented and analyzed, and the discussion is supported by the data.}
+
+- Significance of the research 
+\note{The research should make a significant contribution to the field and provide new insights or knowledge. It should be clear why the research is important and how it advances the field.}
+
+- Validity and reliability of the data
+\note{The data presented in the manuscript should be valid and reliable. Ensure that the data was collected and analyzed using appropriate methods and that any limitations or potential biases are addressed.}
+
+- Conclusions and implications
+\note{The conclusions of the study should be supported by the data presented and should clearly outline the implications of the research for the field.}
+
+- Ethical considerations
+\note{Ensure that the manuscript complies with ethical standards for research involving human or animal subjects, and that any potential conflicts of interest are disclosed.}
+
+- Formatting and presentation
+\notes{The manuscript should follow the guidelines of the target journal, including formatting, style, and length requirements.}
+
+- References
+\notes{The manuscript should include appropriate references to support the research and place it in the context of the field.}
+
+- Overall impact
+\note{Consider the overall impact of the manuscript, both within the specific field and more broadly, to assess its potential contribution to knowledge and its relevance to current research trends.}
+
+## Check the publications of your teammates
+
+- Collaborative opportunities
+\notes{If your teammates have previously published in a particular journal, it may be a good opportunity for collaboration and networking.}
+
+- Familiarity with the journal: 
+\notes{Your teammates may have insights and experience with the journal's submission and review process, which can be valuable when preparing your manuscript.}
+
+- Similar research interests: 
+\notes{If your teammates have published in a journal related to your research interests, it may be a good fit for your manuscript as well.}
+
+- Publication track record: 
+\note{If your teammates have had success publishing in a particular journal, it may indicate the journal is a good choice for high-quality research.}
+
+- Citation impact
+\nots{By analyzing the citation impact of your teammate's publications in a specific journal, you can gauge the potential visibility and impact of your own publication.}
+
+## JCR by areas
+
+JCR (Journal Citation Reports) provides rankings of journals based on citation data. The JCR categorizes journals into different areas of research based on their subject category. Here are the main areas of research covered by the JCR and their respective subject categories:
+
+<div style="font-size:12pt">
+
+```{r, echo=FALSE}
+my_data <- data.frame(
+  Science = c("Agriculture, Biology & Environmental Sciences", "Chemistry", "Clinical Medicine", "Computer Science", "Earth & Planetary Sciences", "Engineering", "Materials Science", "Mathematics", "Neuroscience & Behavior", "Pharmacology & Toxicology", "Physics", "Psychiatry/Psychology", "Social Sciences, General", "Space Science"),
+  Social_Sciences = c("Anthropology", "Economics", "Education & Educational Research", "Geography", "Information Science & Library Science", "International Relations", "Law", "Library Science", "Management", "Political Science", "Psychology, Social", "Public Administration", "Social Work", "Sociology"),
+  Arts_Humanities = c("Arts & Humanities, General", "History", "Linguistics", "Geography", "Literature", "Music", "Philosophy", "Religion", "Theater & Dance", "", "", "", "", ""))
+
+my_data %>%
+  kbl() %>%
+  kable_minimal(full_width = F, html_font = "Verdana")
+```
+
+</div>
+
+## Knowing the journals.
+
+- Ensures journal's scope and audience align with research topic and goals.
+
+- Understand journal's publishing standards and guidelines for formatting, length, and style
+
+- Insight into review process, acceptance rates, and publication timelines
+
+- Avoid predatory journals and find reputable ones.
+
+- Compare journal's impact factor and ranking with others in your field.
+
+- Offers networking opportunities for greater exposure of your work.
+
+# Open access
+
+## Pros of publishing in open access journals:
+
+- Increased visibility and accessibility of the article, as it can be freely accessed by anyone with an internet connection.
+
+- Greater potential for citations and impact, as open access articles are generally more widely read and cited than articles behind paywalls.
+
+- Ability to reach a wider audience, including researchers, students, policymakers, and the general public.
+Encourages collaboration and knowledge sharing across disciplines and geographic regions.
+
+- Can promote greater transparency in research and facilitate reproducibility.
+
+## Cons of publishing in open access journals
+
+- Cost of publishing fees, which can be a barrier for some researchers or institutions.
+
+- Concerns about the quality and rigor of some open access journals, as there is no universal standard for evaluating them.
+
+- Potential for predatory journals that charge exorbitant fees and provide little to no editorial oversight or peer review.
+
+- Some traditional journals may not recognize open access publications as being on par with traditional publications for the purposes of promotion and tenure.
+
+- Concerns about the long-term sustainability of open access models, as they often rely on funding from outside sources and may not generate enough revenue to support themselves.
+
+# The submission process
+
+\note{HERE WE SHOULD SIMULATE A SUBMITION PROCESS}
+
+## Instructions for authors
+
+```{r, eval = TRUE, out.width="70%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Environmental research.png"))
+```
+
+[Example: Environmental Research](https://www.elsevier.com/journals/environmental-research/0013-9351/guide-for-authors)
+
+## Scope
+
+```{r, eval = TRUE, out.width="65%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Environmetal Reseach Scope.png"))
+```
+
+[Example: Environmental Research](https://www.elsevier.com/journals/environmental-research/0013-9351/guide-for-authors)
+
+## Documents to be prepared
+
+- Cover letter
+
+- Graphical abstract or highlights
+
+- Manuscript
+
+- Tables and figures
+
+- Supplementary material
+
+## Cover letter
+
+<div style="font-size:16pt">
+
+Dear [Editor's Name],
+
+I am writing to submit my manuscript, entitled [Manuscript Title], for consideration for publication in [Journal Name]. This paper reports on original research that I conducted in collaboration with [**Co-authors' Names**], and we believe that it would be an excellent fit for your journal.
+
+Our study investigates [**Brief Description of Research Question and Approach**]. Our results [Brief Summary of Key Findings and Significance]. These findings have important implications for [**Relevant Field or Industry**], as they [**Brief Explanation of Implications**].
+
+We believe that our manuscript meets the high standards of [**Journal Name**] and makes a significant contribution to the field of [**Relevant Field**]. We have taken care to ensure that our research is of the highest quality, and we believe that it will be of interest to your readership.
+
+Thank you for your time and consideration. We look forward to hearing from you.
+
+Sincerely,
+
+[**Your Name**] [**Your Affiliation**] [**Your Contact Information**]
+
+</div>
+
+## Graphical abstract or highlights
+
+A Graphical Abstract summarizes key aspects of a scientific paper in a visually appealing way to attract readers' attention and communicate research essence. It typically includes a single image or a mix of images and text highlighting the study's objectives, methodology, results, and conclusions. It aids in conveying the research to a broader audience who may lack time or expertise to read the full paper.
+
+```{r, eval = TRUE, out.width="45%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "graphical.png"))
+```
+
+## Manuscript.
+
+- Final proofreading and editing
+\note{Conduct a final proofread and editing of the manuscript to ensure that it is error-free and meets the journal's formatting and style requirements.}
+
+- Reviewing authorship and affiliations
+\note{Ensure that all authors listed have made a significant contribution to the research and that their affiliations are accurate and up-to-date.}
+
+- Double-checking submission requirements
+\note{Double-check the submission requirements and ensure that all necessary files, forms, and information are included.}
+
+```{r, eval = TRUE, out.width="60%", echo=FALSE, fig.align='center'}
+knitr::include_graphics(here ("figures", "Paper.png"))
+```
+
+## Tables and figures.
+
+- Label and number each table and figure
+\note{Tables and figures should be numbered consecutively in the order that they are mentioned in the text, and each should have a clear and concise caption that describes the contents of the table or figure.}
+
+- Make sure tables and figures are easy to read 
+\note{Tables and figures should be designed to be easily readable, with clear and concise labels and legends. Tables should have appropriate column headings and units of measurement, while figures should have clear axes and scales.}
+
+- Don't duplicate information
+\note{Tables and figures should not duplicate information that is already presented in the text. Instead, they should be used to supplement the text and provide additional information or clarification.}
+
+- Choose the right type of table or figure: 
+\note{Different types of tables and figures are appropriate for different types of data and information. For example, bar graphs are useful for comparing data across categories, while line graphs are useful for showing trends over time.}
+
+- Keep tables and figures relevant
+\note{Only include tables and figures that are relevant to the research question and help to support the conclusions of the paper. Unnecessary or irrelevant tables and figures can detract from the overall quality of the paper.}
+
+## Supplementary material
+
+- Relevance
+\note{Ensure that the supplemental material is relevant and directly related to the research presented in the main paper. Avoid including extraneous or tangential information.}
+
+- Accessibility: 
+\note{Ensure that the supplemental material is easily accessible and can be downloaded and viewed by readers without difficulty. Consider using commonly used file formats, such as PDF or JPEG, and compressing large files.}
+
+- Organization
+O\note{rganize the supplemental material in a clear and logical manner. Consider providing an index or table of contents to aid readers in navigating the material.}
+
+- Citations
+\note{Provide appropriate citations and references to the supplemental material in the main paper. Ensure that the supplemental material is properly integrated into the overall flow of the research.}
+
+- Transparency
+\note{Provide clear and concise explanations of the supplemental material and how it relates to the main paper. Avoid using technical jargon or assuming prior knowledge on the part of the reader.}
+
+- Permissions
+\note{Ensure that all necessary permissions and copyright issues are addressed before submission. Obtain permission for any copyrighted materials used in the supplemental material, such as images or figures.}
+
+- Clarity: 
+\note{Ensure that the supplemental material is well-written, clear, and concise. Consider using headings, subheadings, and bullet points to aid readers in understanding the material.}
+
+# Main rejections
+
+## Resons why a scientific manuscript may be rejected by a journal
+
+- Poor quality of writing
+\note{Manuscripts that are poorly written, difficult to read, or contain grammatical errors are often rejected.}
+
+- Lack of originality
+\note{Manuscripts that do not make a significant contribution to the field, or are not sufficiently novel, are often rejected.}
+
+- Incomplete or insufficient data 
+\note{Manuscripts that do not include sufficient data to support the conclusions or are based on incomplete data are often rejected.}
+
+- Methodological issues
+\note{Manuscripts that have methodological flaws or inconsistencies are often rejected.}
+
+- Lack of significance
+\note{Manuscripts that do not demonstrate significant findings or have limited clinical or practical implications are often rejected.}
+
+- Inappropriate for the journal
+\note{Manuscripts that do not fit the scope or mission of the journal, or are not written in the appropriate style or format, are often rejected.}
+
+- Ethical concerns
+\note{Manuscripts that raise ethical concerns or violate ethical guidelines are often rejected.}
+
+- Poor adherence to journal guidelines 
+\note{Manuscripts that do not follow the journal's formatting or submission guidelines are often rejected.}
+
+# How to interpret the letters from the Editor?
+
+## Major and minor revisions
+
+- Acceptance letter
+\note{Congratulations! Your manuscript has been accepted for publication. The letter may contain minor revisions or formatting instructions, but overall, your work has been accepted for publication.}
+
+- Minor revisions letter: *Your manuscript has been reviewed and deemed to have potential for publication. However, there are some minor revisions or clarifications that the reviewers have requested. You will need to address these comments before the manuscript can be fully accepted*.
+
+- Major revisions letter: *Your manuscript has been reviewed and deemed to have potential for publication, but there are significant issues that need to be addressed before it can be accepted. The reviewers may have identified major methodological or conceptual flaws, or suggested that additional data or analysis is needed.*
+
+- Rejection letter 
+\note{Unfortunately, your manuscript has been rejected for publication. The letter may provide some brief feedback on why the manuscript was not accepted, such as lack of originality, poor quality of writing, or methodological flaws. You may be invited to resubmit the manuscript if you are able to address the reviewers' comments.}
+
+- Desk rejection letter
+\note{This is a rejection letter that is sent without the manuscript being sent out for external review. It often means that the manuscript is not a good fit for the journal's scope or mission, or that it does not meet the journal's standards for quality or originality.}
+
+## ii.	Are the comments/suggestions by reviewers demands/orders to be followed 100%?
+
+- Consider the reviewers' expertise
+\note{Reviewers are typically experts in the field and have a good understanding of what is important and relevant to the research community. If the reviewers' comments are consistent with other research in the field, it may be wise to follow them closely.}
+
+- Consider the importance of the comments
+\note{Reviewers may make comments that are critical to the validity or relevance of your research. If the comments address issues that could significantly impact the quality or interpretation of your results, it may be important to follow them closely.}
+
+- Consider the feasibility of the comments: 
+\note{Some reviewers may make comments or suggestions that are difficult or impossible to implement. If the comments are not feasible, it may be appropriate to explain why you cannot follow them or to suggest an alternative approach.}
+
+- Consider the journal's policies
+\note{Some journals may require authors to address all reviewers' comments, while others may allow authors to address only some of them. Check the journal's author guidelines to determine what is expected of you.}
+
+## How to resubmit? What should I do? How to do it?
+
+- Address all of the reviewers' comments
+\note{Reviewers' comments should be taken seriously and addressed thoroughly in the revised manuscript. Be sure to clearly indicate in the resubmission how you have addressed each comment and revised the manuscript accordingly.}
+
+- Follow the journal's guidelines
+\note{Make sure to carefully review the journal's guidelines for authors and format your resubmission accordingly. This includes ensuring that all required sections are included and formatted correctly, and that any tables, figures, and references are properly cited and labeled.}
+
+- Be clear and concise
+\note{Make sure that the revised manuscript is written in clear and concise language, and that the main points are well-supported by the data. Avoid overinterpreting or overselling your results, and stick to what the data actually show.}
+
+- Explain your revisions
+\note{In addition to addressing the reviewers' comments, provide a brief summary of the major revisions that you made to the manuscript. This can help the editor and reviewers quickly identify the changes that you made and how they address the critiques.}
+
+- Be respectful and professional: 
+\note{Keep in mind that the reviewers and editors are there to help you improve your manuscript and ensure that it meets the standards of the journal. Be respectful and professional in your communications, even if you disagree with a reviewer's comment or decision.}
+
+- Consider getting feedback
+\note{If you are unsure about how to address a particular comment or revision, consider getting feedback from colleagues, your advisor, or a professional editor. This can help you to identify potential issues and improve the clarity and quality of your manuscript.}
+
+# Preparing a manuscript for its submission and case examples of decision letters (practical example) 
+
+\note{I NEED TO COMPLETE THIS}
+
+## References
+
+<div style="font-size:15pt">
+<div id="refs"></div>
+</div>
+
+
+
+
+
+
